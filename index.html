@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>给最爱的老公 💖</title>
-    <!-- 引入可爱圆润手写体与正文字体 -->
+    <!-- 引入手绘风圆润中英文字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Quicksand:wght@600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;700&family=Quicksand:wght@600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -17,143 +17,125 @@
         }
 
         body {
-            /* 马卡龙多巴胺柔和渐变背景：蜜桃粉 -> 奶油黄 -> 薄荷冰蓝 */
-            background: linear-gradient(125deg, #ffd6e0 0%, #fff3d6 45%, #d4f1f9 100%);
-            background-size: 200% 200%;
-            animation: gradientFlow 12s ease infinite;
+            /* 更有质感的温柔马卡龙手帐渐变背景，带有淡淡纸张纹理感 */
+            background: linear-gradient(135deg, #ffedf0 0%, #fff7e6 50%, #e6f7ff 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             position: relative;
-            font-family: 'Quicksand', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #6b5b6e;
+            font-family: 'Quicksand', 'Noto Sans SC', sans-serif;
+            color: #5c4b51;
         }
 
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* 背景微弱的手帐格子暗纹 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(90deg, rgba(255, 182, 193, 0.08) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 182, 193, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+            z-index: 0;
         }
 
-        /* 漂浮马卡龙小元素背景 */
+        /* 飘浮的手绘风小元素 */
         .float-item {
             position: absolute;
             animation: floatUp linear infinite;
             user-select: none;
-            z-index: 0;
-            opacity: 0.75;
-            filter: drop-shadow(0 2px 4px rgba(255, 182, 193, 0.3));
+            z-index: 1;
+            opacity: 0.8;
+            filter: drop-shadow(0 3px 6px rgba(255, 182, 193, 0.4));
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(105vh) rotate(0deg) scale(0.7); opacity: 0; }
-            15% { opacity: 0.8; }
-            85% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) rotate(25deg) scale(1.1); opacity: 0; }
+            0% { transform: translateY(105vh) rotate(-10deg) scale(0.6); opacity: 0; }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.85; }
+            100% { transform: translateY(-10vh) rotate(20deg) scale(1.1); opacity: 0; }
         }
 
-        /* 奶油马卡龙主卡片 */
+        /* 主容器：模仿手帐拍立得卡片 */
         .card-wrapper {
             position: relative;
-            max-width: 430px;
+            max-width: 420px;
             width: 90%;
             z-index: 10;
         }
 
-        /* 可爱小猫耳朵装饰 */
-        .cat-ears {
+        /* 手帐胶带装饰 */
+        .washi-tape {
             position: absolute;
-            top: -22px;
+            top: -14px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 140px;
-            height: 30px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 5;
-            pointer-events: none;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 120px;
+            height: 28px;
+            background: rgba(255, 192, 203, 0.65);
+            border-left: 3px dashed rgba(255, 255, 255, 0.8);
+            border-right: 3px dashed rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            z-index: 12;
         }
 
-        .ear {
-            width: 36px;
-            height: 36px;
-            background: #fff9fb;
-            border: 3px solid #ffb5c8;
-            border-radius: 8px 24px 4px 24px;
-            transform: rotate(-15deg);
-            box-shadow: 0 -4px 10px rgba(255, 166, 193, 0.2);
-        }
-
-        .ear.right {
-            transform: rotate(105deg);
-        }
-
-        .ear::after {
-            content: '';
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            width: 16px;
-            height: 16px;
-            background: #ffc8d7;
-            border-radius: 4px 12px 2px 12px;
-        }
-
+        /* 手绘风卡片主体 */
         .card {
-            background: rgba(255, 253, 254, 0.92);
-            backdrop-filter: blur(12px);
-            padding: 36px 28px 34px;
-            border-radius: 32px;
-            border: 3px solid #ffffff;
-            box-shadow: 
-                0 18px 40px rgba(255, 160, 185, 0.25),
-                0 0 0 6px rgba(255, 214, 224, 0.45);
+            background: #fffdf9; /* 像高级米白画纸 */
+            padding: 42px 30px 36px;
+            /* 拟真手绘不规则圆角与双重手工描边 */
+            border-radius: 28px 32px 26px 30px;
+            border: 3.5px solid #4a3b42;
+            box-shadow: 6px 8px 0px rgba(74, 59, 66, 0.12),
+                        0 20px 40px rgba(255, 150, 170, 0.15);
             text-align: center;
+            position: relative;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* 顶部小标签 */
         .badge {
             display: inline-block;
-            background: #ffe8ef;
-            color: #ff7597;
-            font-size: 12px;
+            background: #ffe3ec;
+            color: #d64072;
+            font-size: 13px;
             font-weight: 700;
-            padding: 4px 14px;
+            padding: 5px 16px;
             border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            border: 2px solid #4a3b42;
+            margin-bottom: 14px;
+            box-shadow: 2px 2px 0px #4a3b42;
+            transform: rotate(-1deg);
         }
 
         .emoji-header {
-            font-size: 62px;
-            margin-bottom: 10px;
+            font-size: 58px;
+            margin-bottom: 12px;
             display: inline-block;
-            animation: wiggle 2.5s ease-in-out infinite;
+            animation: softWiggle 3s ease-in-out infinite;
         }
 
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-4deg) scale(1); }
-            50% { transform: rotate(4deg) scale(1.06); }
+        @keyframes softWiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg) scale(1.05); }
         }
 
-        /* 可爱快乐体标题 */
+        /* 标题：手绘感字体 */
         h1 {
-            font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', cursive, sans-serif;
-            color: #ff6b8b;
-            font-size: 28px;
+            font-family: 'Long Cang', 'ZCOOL KuaiLe', cursive, sans-serif;
+            color: #d64072;
+            font-size: 34px;
             font-weight: 400;
-            margin-bottom: 14px;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 0px #ffe6ec;
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
         }
 
         p {
-            color: #7a687d;
-            font-size: 15.5px;
-            line-height: 1.75;
+            color: #6e5e65;
+            font-size: 15px;
+            line-height: 1.8;
             margin-bottom: 28px;
             font-weight: 500;
         }
@@ -162,101 +144,105 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
             position: relative;
-            min-height: 54px;
+            min-height: 56px;
         }
 
         button {
-            padding: 13px 26px;
-            border: none;
-            border-radius: 50px;
+            padding: 12px 28px;
+            border-radius: 24px;
             font-size: 15.5px;
             font-weight: 700;
             cursor: pointer;
             font-family: 'Quicksand', 'Noto Sans SC', sans-serif;
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.2s ease;
         }
 
-        /* 马卡龙草莓粉主按钮 */
+        /* 手绘厚边框拟真按钮：同意 */
         #yesBtn {
-            background: linear-gradient(135deg, #ff8fab 0%, #ff6b8b 100%);
+            background: #ff7597;
             color: #ffffff;
-            box-shadow: 0 6px 18px rgba(255, 117, 151, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4);
+            border: 3px solid #4a3b42;
+            box-shadow: 3px 4px 0px #4a3b42;
             z-index: 2;
         }
 
         #yesBtn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 22px rgba(255, 117, 151, 0.5);
+            transform: translate(-1px, -2px);
+            box-shadow: 4px 6px 0px #4a3b42;
         }
 
-        /* 马卡龙芋泥灰蓝逃跑按钮 */
+        #yesBtn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 2px 0px #4a3b42;
+        }
+
+        /* 手绘厚边框拟真按钮：拒绝（逃跑） */
         #noBtn {
-            background: #eef2f7;
-            color: #8c96a6;
-            border: 2px solid #dfe6ef;
+            background: #f1f3f6;
+            color: #7a828e;
+            border: 3px solid #4a3b42;
+            box-shadow: 3px 4px 0px #4a3b42;
             position: relative;
             z-index: 1;
             white-space: nowrap;
         }
 
-        /* 惊喜信件页面 */
+        /* 惊喜信件页面：带有手帐本风格 */
         .letter-content {
             display: none;
             text-align: left;
-            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.85) translateY(15px); }
+            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .letter-content h2 {
-            font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', cursive, sans-serif;
-            color: #ff6b8b;
-            font-size: 22px;
+            font-family: 'Long Cang', 'ZCOOL KuaiLe', cursive, sans-serif;
+            color: #d64072;
+            font-size: 26px;
             font-weight: 400;
             text-align: center;
-            line-height: 1.45;
-            margin-bottom: 18px;
+            line-height: 1.4;
+            margin-bottom: 16px;
         }
 
-        /* 信纸质感文本框 */
+        /* 手帐便签纸背景框 */
         .letter-text {
-            background: linear-gradient(180deg, #fff9fb 0%, #fff4f7 100%);
+            background: #fff8f0;
             padding: 22px 20px;
-            border-radius: 22px;
-            color: #6b5b6e;
+            border-radius: 20px;
+            color: #5c4b51;
             font-size: 15px;
             line-height: 1.85;
-            border: 2px dashed #ffc2d4;
+            border: 3px solid #4a3b42;
+            box-shadow: 4px 4px 0px rgba(74, 59, 66, 0.08);
             position: relative;
         }
 
         .signature {
-            margin-top: 16px;
+            margin-top: 18px;
             text-align: right;
-            font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', cursive, sans-serif;
-            font-size: 17px;
-            color: #ff7597;
+            font-family: 'Long Cang', cursive, sans-serif;
+            font-size: 22px;
+            color: #d64072;
         }
     </style>
 </head>
 <body>
 
     <div class="card-wrapper">
-        <!-- 顶部小猫耳朵 -->
-        <div class="cat-ears">
-            <div class="ear left"></div>
-            <div class="ear right"></div>
-        </div>
+        <!-- 拟真手帐纸胶带 -->
+        <div class="washi-tape"></div>
 
         <div class="card" id="mainCard">
             <!-- 初始互动界面 -->
             <div id="questionBox">
-                <div class="badge">🐾 紧急认错小电报 🐾</div>
+                <div class="badge">💌 专属和好小电报 💌</div>
                 <br>
                 <div class="emoji-header">🥺👉👈</div>
                 <h1>老公，我错啦...</h1>
@@ -270,7 +256,7 @@
             <!-- 点击原谅后的惊喜信件 -->
             <div class="letter-content" id="letterBox">
                 <div style="text-align: center;">
-                    <div class="badge">✨ 和好契约达成 ✨</div>
+                    <div class="badge">✨ 牵手成功啦 ✨</div>
                     <br>
                     <div class="emoji-header">🥰🎉</div>
                 </div>
@@ -286,19 +272,19 @@
     </div>
 
     <script>
-        // 1. 生成背景漂浮马卡龙可爱元素
-        const icons = ['🩷', '🩵', '💛', '🐾', '🍰', '✨', '🌸', '🍓'];
+        // 1. 生成手绘风漂浮小元素（爱心、星星、小猫爪、蛋糕）
+        const icons = ['🩷', '⭐', '🐾', '🍰', '✨', '🌸', '🍓', '💌'];
         function createFloatItems() {
             const item = document.createElement('div');
             item.classList.add('float-item');
             item.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            item.style.left = Math.random() * 96 + 'vw';
-            item.style.fontSize = (Math.random() * 16 + 16) + 'px';
+            item.style.left = Math.random() * 95 + 'vw';
+            item.style.fontSize = (Math.random() * 16 + 18) + 'px';
             item.style.animationDuration = (Math.random() * 4 + 5) + 's';
             document.body.appendChild(item);
             setTimeout(() => item.remove(), 9000);
         }
-        setInterval(createFloatItems, 450);
+        setInterval(createFloatItems, 400);
 
         // 2. “不原谅”按钮逃跑逻辑
         const noBtn = document.getElementById('noBtn');
@@ -314,18 +300,16 @@
         let yesScale = 1;
 
         function moveButton() {
-            // 每次逃跑，“原谅”按钮变大一点（限制最大倍数防止遮挡）
-            if (yesScale < 1.8) {
-                yesScale += 0.12;
+            if (yesScale < 1.6) {
+                yesScale += 0.1;
                 yesBtn.style.transform = `scale(${yesScale})`;
             }
 
-            // 随机切换求饶文案
             noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-            // 限制在合理范围内随机跳动，防止跑出手机屏幕
-            const x = (Math.random() - 0.5) * 160;
-            const y = (Math.random() - 0.5) * 160;
+            // 限制在手机屏幕内的逃跑轨迹
+            const x = (Math.random() - 0.5) * 150;
+            const y = (Math.random() - 0.5) * 150;
             noBtn.style.transform = `translate(${x}px, ${y}px)`;
         }
 
@@ -335,11 +319,10 @@
             moveButton();
         });
 
-        // 3. 点击“原谅”后的切换效果
+        // 3. 点击“原谅”后的效果
         yesBtn.addEventListener('click', () => {
             document.getElementById('questionBox').style.display = 'none';
             document.getElementById('letterBox').style.display = 'block';
-            // 爆发一波马卡龙爱心蛋糕雨
             for(let i = 0; i < 35; i++) {
                 setTimeout(createFloatItems, i * 45);
             }
