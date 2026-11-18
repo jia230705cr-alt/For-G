@@ -14,7 +14,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* 保证所有文字均为圆滚滚、胖乎乎的圆体 */
             font-family: 'Mali', 'ZCOOL KuaiLe', sans-serif !important;
         }
 
@@ -58,7 +57,7 @@
             100% { transform: translateY(-10vh) rotate(20deg) scale(1.1); opacity: 0; }
         }
 
-        /* 屏幕下落的眼泪粒子 */
+        /* 下落眼泪粒子 */
         .falling-tear {
             position: absolute;
             font-size: 18px;
@@ -73,7 +72,6 @@
             100% { transform: translateY(120px) scale(1.2); opacity: 0; }
         }
 
-        /* 卡片容器 */
         .card-wrapper {
             position: relative;
             max-width: 420px;
@@ -81,7 +79,6 @@
             z-index: 10;
         }
 
-        /* 纸胶带 */
         .washi-tape {
             position: absolute;
             top: -14px;
@@ -96,7 +93,6 @@
             z-index: 12;
         }
 
-        /* 卡片主体 */
         .card {
             background: #fffdf9;
             padding: 36px 26px 30px;
@@ -108,64 +104,58 @@
             position: relative;
         }
 
-        /* 专属手绘小猫图像容器 */
         .cat-container {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             margin: 0 auto 10px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #fff0f3;
+            border: 3px solid #4a3b42;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 3px 3px 0px #4a3b42;
         }
 
         .cat-img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            object-fit: cover;
             animation: catIdle 3s ease-in-out infinite;
         }
 
         @keyframes catIdle {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-4px) scale(1.02); }
+            50% { transform: translateY(-3px) scale(1.03); }
         }
 
-        /* 猫咪流出的眼泪（左、右两条） */
+        /* 泪滴定位 */
         .cat-tear {
             position: absolute;
             font-size: 20px;
             opacity: 0;
             transform: scale(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             pointer-events: none;
             z-index: 15;
         }
 
-        .cat-tear.left {
-            left: 36px;
-            top: 65px;
-        }
+        .cat-tear.left { left: 28px; top: 55px; }
+        .cat-tear.right { right: 28px; top: 55px; }
 
-        .cat-tear.right {
-            right: 36px;
-            top: 65px;
-        }
-
-        /* 哭泣状态时的泪滴动画 */
         .crying .cat-tear {
             opacity: 1;
-            transform: scale(1) translateY(12px);
-            animation: tearStreaming 1s infinite ease-in-out alternate;
+            transform: scale(1) translateY(10px);
+            animation: tearStreaming 0.8s infinite ease-in-out alternate;
         }
 
         @keyframes tearStreaming {
-            0% { transform: scale(0.9) translateY(4px); }
-            100% { transform: scale(1.1) translateY(18px); }
+            0% { transform: scale(0.9) translateY(2px); }
+            100% { transform: scale(1.1) translateY(14px); }
         }
 
-        /* 标签 */
         .badge {
             display: inline-block;
             background: #ffe3ec;
@@ -180,7 +170,6 @@
             transform: rotate(-1deg);
         }
 
-        /* 统一圆润粗体大标题 */
         h1 {
             color: #d64072;
             font-size: 26px;
@@ -215,7 +204,6 @@
             transition: all 0.2s ease;
         }
 
-        /* 同意按钮 */
         #yesBtn {
             background: #ff7597;
             color: #ffffff;
@@ -229,7 +217,6 @@
             box-shadow: 4px 6px 0px #4a3b42;
         }
 
-        /* 拒绝按钮 */
         #noBtn {
             background: #f1f3f6;
             color: #7a828e;
@@ -240,7 +227,6 @@
             white-space: nowrap;
         }
 
-        /* 惊喜信件页面 */
         .letter-content {
             display: none;
             text-align: left;
@@ -261,7 +247,6 @@
             margin-bottom: 16px;
         }
 
-        /* 信件便签纸 */
         .letter-text {
             background: #fff8f0;
             padding: 22px 20px;
@@ -291,12 +276,9 @@
         <div class="card" id="mainCard">
             <!-- 初始互动界面 -->
             <div id="questionBox">
-                <!-- 手绘可爱小猫图片与眼泪交互区 -->
+                <!-- 直接调用你在 GitHub 里改好的 cat.png -->
                 <div class="cat-container" id="catBox">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=300" class="cat-img" id="catImage" alt="cute cat" style="display:none;">
-                    <!-- 这里直接使用你上传的小猫图片 -->
-                    <img src="14e76d517dde.png" class="cat-img" id="catNormal" alt="normal cat">
-                    <img src="output_5165b3_5.png" class="cat-img" id="catCry" alt="crying cat" style="display: none;">
+                    <img src="cat.png" class="cat-img" alt="cute cat">
                     
                     <!-- 双侧流下的两滴眼泪 -->
                     <div class="cat-tear left">💧</div>
@@ -316,7 +298,7 @@
             <div class="letter-content" id="letterBox">
                 <div style="text-align: center;">
                     <div class="cat-container">
-                        <img src="14e76d517dde.png" class="cat-img" style="transform: scale(1.05); filter: drop-shadow(0 2px 5px rgba(255,100,150,0.25));">
+                        <img src="cat.png" class="cat-img" style="transform: scale(1.05);">
                         <div style="position: absolute; top: 10px; font-size: 26px;">✨💖✨</div>
                     </div>
                     <h2>我老公这么好！嘻嘻！我想你了！<br>就知道你会原谅我哒 ~</h2>
@@ -346,12 +328,10 @@
         }
         setInterval(createFloatItems, 400);
 
-        // 2. “不原谅”按钮逃跑 + 小猫眼泪汪汪及两侧流下眼泪
+        // 2. “不原谅”按钮逃跑 + 小猫两侧流下眼泪特效
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const catBox = document.getElementById('catBox');
-        const catNormal = document.getElementById('catNormal');
-        const catCry = document.getElementById('catCry');
         
         const phrases = [
             "点不到我略略略 😝",
@@ -364,18 +344,15 @@
         let yesScale = 1;
 
         function triggerTears() {
-            // 第一步：将小猫切换为眼泪汪汪/两行热泪的表情
-            catNormal.style.display = 'none';
-            catCry.style.display = 'block';
+            // 触发小猫盒子进入哭泣状态（双侧眼泪汪汪浮现并往下流）
             catBox.classList.add('crying');
 
-            // 第二步：同时在小猫两侧及下方产生落泪特效（两边掉落）
+            // 屏幕/卡片周围掉落眼泪雨
             for(let i = 0; i < 4; i++) {
                 const tear = document.createElement('div');
                 tear.classList.add('falling-tear');
                 tear.innerHTML = '💧';
                 
-                // 控制在左边眼角或右边眼角
                 const isLeft = Math.random() > 0.5;
                 const baseOffset = isLeft ? -45 : 45;
                 const randomSpread = (Math.random() - 0.5) * 15;
@@ -395,7 +372,7 @@
 
             noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-            // 触发眼泪两阶段效果
+            // 触发眼泪特效
             triggerTears();
 
             // 按钮位置跳动
