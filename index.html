@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>给最爱的老公 💖</title>
-    <!-- 引入手绘风圆润中英文字体 -->
+    <!-- 引入圆头圆脑的可爱圆体字体 (Mali / ZCOOL KuaiLe / 粗圆) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;700&family=Quicksand:wght@600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* 确保所有文字都使用胖乎乎的可爱圆体 */
+            font-family: 'Mali', 'ZCOOL KuaiLe', sans-serif !important;
         }
 
         body {
-            /* 更有质感的温柔马卡龙手帐渐变背景，带有淡淡纸张纹理感 */
             background: linear-gradient(135deg, #ffedf0 0%, #fff7e6 50%, #e6f7ff 100%);
             min-height: 100vh;
             display: flex;
@@ -25,11 +26,10 @@
             align-items: center;
             overflow: hidden;
             position: relative;
-            font-family: 'Quicksand', 'Noto Sans SC', sans-serif;
             color: #5c4b51;
         }
 
-        /* 背景微弱的手帐格子暗纹 */
+        /* 手帐网格背景 */
         body::before {
             content: "";
             position: absolute;
@@ -41,7 +41,7 @@
             z-index: 0;
         }
 
-        /* 飘浮的手绘风小元素 */
+        /* 飘浮小元素 */
         .float-item {
             position: absolute;
             animation: floatUp linear infinite;
@@ -58,7 +58,7 @@
             100% { transform: translateY(-10vh) rotate(20deg) scale(1.1); opacity: 0; }
         }
 
-        /* 主容器：模仿手帐拍立得卡片 */
+        /* 卡片容器 */
         .card-wrapper {
             position: relative;
             max-width: 420px;
@@ -66,7 +66,7 @@
             z-index: 10;
         }
 
-        /* 手帐胶带装饰 */
+        /* 纸胶带 */
         .washi-tape {
             position: absolute;
             top: -14px;
@@ -81,62 +81,69 @@
             z-index: 12;
         }
 
-        /* 手绘风卡片主体 */
+        /* 卡片主体 */
         .card {
-            background: #fffdf9; /* 像高级米白画纸 */
-            padding: 42px 30px 36px;
-            /* 拟真手绘不规则圆角与双重手工描边 */
+            background: #fffdf9;
+            padding: 40px 30px 34px;
             border-radius: 28px 32px 26px 30px;
             border: 3.5px solid #4a3b42;
             box-shadow: 6px 8px 0px rgba(74, 59, 66, 0.12),
                         0 20px 40px rgba(255, 150, 170, 0.15);
             text-align: center;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* 顶部小标签 */
+        /* 顶部手绘可爱小猫造型 */
+        .cute-cat-avatar {
+            width: 84px;
+            height: 84px;
+            background: #fff0f3;
+            border: 3px solid #4a3b42;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 44px;
+            box-shadow: 3px 3px 0px #4a3b42;
+            animation: catBreath 2.5s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes catBreath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        /* 标签 */
         .badge {
             display: inline-block;
             background: #ffe3ec;
             color: #d64072;
             font-size: 13px;
             font-weight: 700;
-            padding: 5px 16px;
+            padding: 4px 16px;
             border-radius: 20px;
             border: 2px solid #4a3b42;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             box-shadow: 2px 2px 0px #4a3b42;
             transform: rotate(-1deg);
         }
 
-        .emoji-header {
-            font-size: 58px;
-            margin-bottom: 12px;
-            display: inline-block;
-            animation: softWiggle 3s ease-in-out infinite;
-        }
-
-        @keyframes softWiggle {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg) scale(1.05); }
-        }
-
-        /* 标题：手绘感字体 */
+        /* 统一圆润粗体大标题 */
         h1 {
-            font-family: 'Long Cang', 'ZCOOL KuaiLe', cursive, sans-serif;
             color: #d64072;
-            font-size: 34px;
-            font-weight: 400;
+            font-size: 28px;
+            font-weight: 700;
             margin-bottom: 12px;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         p {
             color: #6e5e65;
-            font-size: 15px;
+            font-size: 15.5px;
             line-height: 1.8;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
             font-weight: 500;
         }
 
@@ -152,14 +159,13 @@
         button {
             padding: 12px 28px;
             border-radius: 24px;
-            font-size: 15.5px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            font-family: 'Quicksand', 'Noto Sans SC', sans-serif;
             transition: all 0.2s ease;
         }
 
-        /* 手绘厚边框拟真按钮：同意 */
+        /* 同意按钮 */
         #yesBtn {
             background: #ff7597;
             color: #ffffff;
@@ -173,12 +179,7 @@
             box-shadow: 4px 6px 0px #4a3b42;
         }
 
-        #yesBtn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 2px 0px #4a3b42;
-        }
-
-        /* 手绘厚边框拟真按钮：拒绝（逃跑） */
+        /* 拒绝按钮 */
         #noBtn {
             background: #f1f3f6;
             color: #7a828e;
@@ -189,7 +190,21 @@
             white-space: nowrap;
         }
 
-        /* 惊喜信件页面：带有手帐本风格 */
+        /* 流泪眼泪动态特效样式 */
+        .tear {
+            position: absolute;
+            font-size: 18px;
+            animation: fallTear 1s linear forwards;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        @keyframes fallTear {
+            0% { transform: translateY(0) scale(0.6); opacity: 1; }
+            100% { transform: translateY(60px) scale(1.2); opacity: 0; }
+        }
+
+        /* 惊喜信件页面 */
         .letter-content {
             display: none;
             text-align: left;
@@ -202,16 +217,15 @@
         }
 
         .letter-content h2 {
-            font-family: 'Long Cang', 'ZCOOL KuaiLe', cursive, sans-serif;
             color: #d64072;
-            font-size: 26px;
-            font-weight: 400;
+            font-size: 22px;
+            font-weight: 700;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 16px;
         }
 
-        /* 手帐便签纸背景框 */
+        /* 信件便签纸 */
         .letter-text {
             background: #fff8f0;
             padding: 22px 20px;
@@ -227,8 +241,8 @@
         .signature {
             margin-top: 18px;
             text-align: right;
-            font-family: 'Long Cang', cursive, sans-serif;
-            font-size: 22px;
+            font-size: 18px;
+            font-weight: 700;
             color: #d64072;
         }
     </style>
@@ -236,15 +250,15 @@
 <body>
 
     <div class="card-wrapper">
-        <!-- 拟真手帐纸胶带 -->
         <div class="washi-tape"></div>
 
         <div class="card" id="mainCard">
             <!-- 初始互动界面 -->
             <div id="questionBox">
+                <!-- 手绘可爱小猫头像 -->
+                <div class="cute-cat-avatar" id="catFace">🐱</div>
+                
                 <div class="badge">💌 专属和好小电报 💌</div>
-                <br>
-                <div class="emoji-header">🥺👉👈</div>
                 <h1>老公，我错啦...</h1>
                 <p>是我没有耐心 说话不好听了 我已严肃反思<br>下次肯定改 肯定做你最最最贴心的女朋友<br>看在我这么诚恳的份上，原谅我好不好嘛？</p>
                 <div class="btn-group">
@@ -256,11 +270,9 @@
             <!-- 点击原谅后的惊喜信件 -->
             <div class="letter-content" id="letterBox">
                 <div style="text-align: center;">
-                    <div class="badge">✨ 牵手成功啦 ✨</div>
-                    <br>
-                    <div class="emoji-header">🥰🎉</div>
+                    <div class="cute-cat-avatar">😻</div>
+                    <h2>我老公这么好！嘻嘻！我想你了！<br>就知道你会原谅我哒 ~</h2>
                 </div>
-                <h2>我老公这么好！嘻嘻！我想你了！<br>就知道你会原谅我哒 ~</h2>
                 <div class="letter-text">
                     可能我情绪上来了就口不择言，我也在改，没有第一时间考虑你是我的错嘛。<br><br>
                     以后我一定多站在你的角度想问题，少一点脾气，多一点耐心，不在你累的时候还和你闹脾气了，肯定稳稳接住你的情绪！违反一次我就好好补偿你好不好呀？<br><br>
@@ -272,7 +284,7 @@
     </div>
 
     <script>
-        // 1. 生成手绘风漂浮小元素（爱心、星星、小猫爪、蛋糕）
+        // 1. 背景飘浮小元素
         const icons = ['🩷', '⭐', '🐾', '🍰', '✨', '🌸', '🍓', '💌'];
         function createFloatItems() {
             const item = document.createElement('div');
@@ -286,9 +298,10 @@
         }
         setInterval(createFloatItems, 400);
 
-        // 2. “不原谅”按钮逃跑逻辑
+        // 2. “不原谅”按钮逃跑 + 猫咪流泪特效
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
+        const catFace = document.getElementById('catFace');
         const phrases = [
             "点不到我略略略 😝",
             "再考虑一下嘛 🥺",
@@ -299,6 +312,24 @@
         ];
         let yesScale = 1;
 
+        function triggerTears() {
+            // 切换小猫为委屈哭泣脸
+            catFace.innerText = '😿';
+            
+            // 在小猫头像周围生成眼泪下落特效
+            for(let i = 0; i < 2; i++) {
+                const tear = document.createElement('div');
+                tear.classList.add('tear');
+                tear.innerHTML = '💧';
+                // 随机在小猫头像附近掉落
+                const offsetX = (Math.random() - 0.5) * 50;
+                tear.style.left = `calc(50% + ${offsetX}px)`;
+                tear.style.top = '70px';
+                catFace.appendChild(tear);
+                setTimeout(() => tear.remove(), 1000);
+            }
+        }
+
         function moveButton() {
             if (yesScale < 1.6) {
                 yesScale += 0.1;
@@ -307,7 +338,10 @@
 
             noBtn.innerText = phrases[Math.floor(Math.random() * phrases.length)];
 
-            // 限制在手机屏幕内的逃跑轨迹
+            // 触发小猫流泪
+            triggerTears();
+
+            // 按钮逃跑
             const x = (Math.random() - 0.5) * 150;
             const y = (Math.random() - 0.5) * 150;
             noBtn.style.transform = `translate(${x}px, ${y}px)`;
