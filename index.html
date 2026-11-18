@@ -105,14 +105,14 @@
         }
 
         .cat-container {
-            width: 130px;
-            height: 130px;
+            width: 135px;
+            height: 135px;
             margin: 0 auto 10px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #fff0f3;
+            background: #fffaf0;
             border: 3px solid #4a3b42;
             border-radius: 50%;
             overflow: hidden;
@@ -131,10 +131,10 @@
             50% { transform: translateY(-3px) scale(1.03); }
         }
 
-        /* 泪滴定位 */
+        /* 泪滴定位：精准对齐手绘小猫的两只大眼睛下方 */
         .cat-tear {
             position: absolute;
-            font-size: 20px;
+            font-size: 18px;
             opacity: 0;
             transform: scale(0);
             transition: all 0.4s ease;
@@ -142,18 +142,18 @@
             z-index: 15;
         }
 
-        .cat-tear.left { left: 28px; top: 55px; }
-        .cat-tear.right { right: 28px; top: 55px; }
+        .cat-tear.left { left: 36px; top: 62px; }
+        .cat-tear.right { right: 32px; top: 54px; }
 
         .crying .cat-tear {
             opacity: 1;
-            transform: scale(1) translateY(10px);
+            transform: scale(1) translateY(8px);
             animation: tearStreaming 0.8s infinite ease-in-out alternate;
         }
 
         @keyframes tearStreaming {
             0% { transform: scale(0.9) translateY(2px); }
-            100% { transform: scale(1.1) translateY(14px); }
+            100% { transform: scale(1.15) translateY(16px); }
         }
 
         .badge {
@@ -276,9 +276,9 @@
         <div class="card" id="mainCard">
             <!-- 初始互动界面 -->
             <div id="questionBox">
-                <!-- 直接将你那张手绘小猫图片完美内嵌显示 -->
+                <!-- 直接调用你仓库里原本上传的 14e76d517dde.png -->
                 <div class="cat-container" id="catBox">
-                    <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=400" class="cat-img" alt="cute cat">
+                    <img src="./14e76d517dde.png" class="cat-img" alt="cute cat">
                     
                     <!-- 双侧流下的两滴眼泪 -->
                     <div class="cat-tear left">💧</div>
@@ -298,8 +298,8 @@
             <div class="letter-content" id="letterBox">
                 <div style="text-align: center;">
                     <div class="cat-container">
-                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=400" class="cat-img" style="transform: scale(1.05);">
-                        <div style="position: absolute; top: 10px; font-size: 26px;">✨💖✨</div>
+                        <img src="./14e76d517dde.png" class="cat-img" style="transform: scale(1.05);">
+                        <div style="position: absolute; top: 8px; font-size: 24px;">✨💖✨</div>
                     </div>
                     <h2>我老公这么好！嘻嘻！我想你了！<br>就知道你会原谅我哒 ~</h2>
                 </div>
@@ -344,21 +344,21 @@
         let yesScale = 1;
 
         function triggerTears() {
-            // 触发小猫盒子进入哭泣状态（双侧眼泪汪汪浮现并往下流）
+            // 第一阶段：眼眶两行泪滴浮现并持续闪烁掉落
             catBox.classList.add('crying');
 
-            // 屏幕/卡片周围掉落眼泪雨
+            // 第二阶段：从左右两只眼角位置连续掉落眼泪珠
             for(let i = 0; i < 4; i++) {
                 const tear = document.createElement('div');
                 tear.classList.add('falling-tear');
                 tear.innerHTML = '💧';
                 
-                const isLeft = Math.random() > 0.5;
-                const baseOffset = isLeft ? -45 : 45;
-                const randomSpread = (Math.random() - 0.5) * 15;
+                const isLeft = i % 2 === 0;
+                const baseOffset = isLeft ? -26 : 30;
+                const randomSpread = (Math.random() - 0.5) * 10;
                 
                 tear.style.left = `calc(50% + ${baseOffset + randomSpread}px)`;
-                tear.style.top = '75px';
+                tear.style.top = isLeft ? '65px' : '58px';
                 catBox.appendChild(tear);
                 setTimeout(() => tear.remove(), 1200);
             }
